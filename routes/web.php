@@ -12,5 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
+});
+
+Route::any('{anguler_route}', function () {
+	return view('index');
+});
+Route::any('{anguler_route}/{anguler_sub_route}', function () {
+	return view('index');
+});
+Route::any('{anguler_route}/{anguler_sub_route}/{anguler_sub_sub_route}', function () {
+	return view('index');
 });

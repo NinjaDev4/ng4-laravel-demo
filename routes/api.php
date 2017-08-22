@@ -43,3 +43,4 @@ Route::post('/sign-in', [
 Route::post('/sign-out', [
     'uses' => 'UserController@signout'
 ]);
+
