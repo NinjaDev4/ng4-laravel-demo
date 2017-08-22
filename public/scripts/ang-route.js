@@ -1,5 +1,5 @@
 /** All registered Routes for the website : findstartgrow */
-ang.config(function($routeProvider, $httpProvider, $locationProvider, $controllerProvider, $compileProvider, $provide) {
+ang.config(function($routeProvider, $locationProvider, $controllerProvider, $compileProvider, $provide) {
 
      /* Register controllers and services to load when required */
     ang.registerController = $controllerProvider.register;
@@ -13,7 +13,7 @@ ang.config(function($routeProvider, $httpProvider, $locationProvider, $controlle
 
             $script(dependencies, function() {
                 $rootScope.$apply(function() {
-                    deferred.resolve(); // all dependencies have now been loaded by $script.js so resolve the promise
+                    deferred.resolve();
                 });
             });
 
@@ -22,6 +22,27 @@ ang.config(function($routeProvider, $httpProvider, $locationProvider, $controlle
     };
 
     $routeProvider
+        .when('/sign-in',
+        {
+            templateUrl: 'partials/sign-in.html',
+            controller: 'SigninController',
+            resolve: {
+                deps: ang.resolveScriptDeps([
+                    'scripts/controllers/signinController.js'
+                ]),
+                //notLoggedIn: onlynotLoggedIn
+            }
+        })
+        .when('/sign-up',
+        {
+            templateUrl: 'partials/sign-up.html',
+            controller: 'SignupController',
+            resolve: {
+                deps: ang.resolveScriptDeps([
+                    'scripts/controllers/signupController.js'
+                ])
+            }
+        })
         .when('/home',
         {
             templateUrl: 'partials/home.html',
@@ -32,22 +53,25 @@ ang.config(function($routeProvider, $httpProvider, $locationProvider, $controlle
                 ])
             }
         })
-        .when('/link',
-        {
-            templateUrl: 'partials/link.html',
-            controller: 'LinkController',
-            resolve: {
-                deps: ang.resolveScriptDeps([
-                    'scripts/controllers/linkController.js'
-                ])
-            }
-        })
-        .otherwise( { redirectTo: '/' } );
+        .otherwise( { redirectTo: '/sign-in' } );
          
 
 
     /* use the HTML5 History API */
     $locationProvider.html5Mode(true);
+
+    // var onlynotLoggedIn = function($q, $cookies, $window){
+    //     var deferred = $q.defer();
+
+    //     var hasCookie = $cookies.getObject('token');
+    //     if (!hasCookie) {
+    //         deferred.resolve();
+    //     } else {
+    //         deferred.reject();
+    //         $window.location.href = '/sign-in';
+    //     }
+    //     return deferred.promise;
+    // }
 
 });
 

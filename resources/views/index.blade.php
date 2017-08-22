@@ -7,33 +7,37 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Laravel Demo</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
     </head>
 
     <body  ng-controller="HeaderCtrl">
-        <header>
+        <header ng-show="loggedIn">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                          <a class="navbar-brand" href="/">Navbar</a>
-                          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                          </button>
+                        <nav class="navbar navbar-default">
+                          <div class="container-fluid">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                              </button>
+                            </div>
 
                           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav mr-auto">
-                              <li class="nav-item active">
+                            <ul class="navbar-nav nav">
+                              <li class="nav-item" ng-class="path == '/home' ? 'active': ''">
                                 <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
                               </li>
                               <li class="nav-item">
-                                <a class="nav-link" href="/link">Link</a>
+                                <a class="nav-link" href="/link">Sign Out</a>
                               </li>
                             </ul>
-                            <form class="form-inline my-2 my-lg-0">
-                              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                            </form>
                           </div>
                         </nav>
                     </div>
