@@ -1,3 +1,26 @@
+ang.run(['$rootScope', '$window', 'authProvider', function ($rootScope, $window,     authProvider) {
+    $rootScope.$on('$routeChangeStart', function (next, current) {
+        if (!authProvider.isLoggedIn() && current.$$route.originalPath != '/sign-in'){
+          $window.location.href = '/sign-in';
+        }
+        else {
+          //console.log('ALLOW');
+        }
+    });
+}])
+
+ang.factory('authProvider', ['$cookies', function($cookies) {
+    var user = $cookies.get('token');
+      return {
+        setUser : function(aUser){
+          user = aUser;
+        },
+        isLoggedIn : function(){
+          return(user)? user : false;
+        }
+      };
+  }]);
+
 /** All registered Routes for the website : findstartgrow */
 ang.config(function($routeProvider, $locationProvider, $controllerProvider, $compileProvider, $provide) {
 
@@ -31,16 +54,6 @@ ang.config(function($routeProvider, $locationProvider, $controllerProvider, $com
                     'scripts/controllers/signinController.js'
                 ]),
                 //notLoggedIn: onlynotLoggedIn
-            }
-        })
-        .when('/sign-up',
-        {
-            templateUrl: 'partials/sign-up.html',
-            controller: 'SignupController',
-            resolve: {
-                deps: ang.resolveScriptDeps([
-                    'scripts/controllers/signupController.js'
-                ])
             }
         })
         .when('/home',

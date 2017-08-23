@@ -1,7 +1,22 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-			<h1>this is home</h1>
+			<div class="tabs">
+				<ul>
+					<li ng-click='openGetquotes()'>Get Quotes</li>
+					<li ng-click='openAddquotes()'>Add Quotes</li>
+					<li ng-click='openEditquotes()'>Edit/Delete Quotes</li>
+				</ul>
+			</div>
+			<div class="quotes" ng-show='getquotes'>
+				<p>this is Get qoute</p>
+			</div>
+			<div class="quotes" ng-hide='addquotes'>
+				<p>this is Add qoute</p>
+			</div>
+			<div class="quotes" ng-hide='editquotes'>
+				<p>this is Edit/Delete qoute</p>
+			</div>
 		</div>
 	</div>
 </div>

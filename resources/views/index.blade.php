@@ -35,7 +35,7 @@
                                 <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
                               </li>
                               <li class="nav-item">
-                                <a class="nav-link" href="/link">Sign Out</a>
+                                <a class="nav-link" ng-click='logout()'>Sign Out</a>
                               </li>
                             </ul>
                           </div>
@@ -57,8 +57,9 @@
            
 
         <!-- angular js library -->
-        <script type="text/javascript" src="../node_modules/angular/angular.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.4.1/angular-cookies.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular-route.js"></script>
         <!-- angular js modules -->
         <script type="text/javascript" src="../scripts/ang-module.js"></script>
         <!-- angular js routes -->
