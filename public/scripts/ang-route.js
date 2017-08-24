@@ -18,8 +18,8 @@ ang.factory('authProvider', ['$cookies', function($cookies) {
         isLoggedIn : function(){
           return(user)? user : false;
         }
-      };
-  }]);
+    };
+}]);
 
 /** All registered Routes for the website : findstartgrow */
 ang.config(function($routeProvider, $locationProvider, $controllerProvider, $compileProvider, $provide) {

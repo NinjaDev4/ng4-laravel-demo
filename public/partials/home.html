@@ -1,21 +1,39 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-			<div class="tabs">
-				<ul>
-					<li ng-click='openGetquotes()'>Get Quotes</li>
-					<li ng-click='openAddquotes()'>Add Quotes</li>
-					<li ng-click='openEditquotes()'>Edit/Delete Quotes</li>
-				</ul>
+        	
+			<div class="quotes" ng-show='quoteAction'>
+				<h1>Quotes</h1>
+				<div class="addquote">
+					<div class="msg success-msg" ng-hide='onSuccess'>Quote Added Successfully</div>
+					<div class="msg delete-msg" ng-hide='onDelete'>Quote Deleted Successfully</div>
+					<form ng-submit="submitAddQuote()">
+						<input type="text" ng-model="quote.content" required="required">
+						<input type="submit" value="Add Quote">
+					</form>
+				</div>
+				<table class="table table-bordered table-striped" ng-init='getquotes()'>
+					<thead>
+						<tr>
+							<th>Quote</th>
+							<th colspan="2">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="quote in quotes">
+							<td>{{ quote.content }}</td>
+							<td><a href="#" ng-click="editQuote(quote)">Edit</a></td>
+							<td><a href="#" ng-click="deleteQuote(quote.id)">Delete</a></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-			<div class="quotes" ng-show='getquotes'>
-				<p>this is Get qoute</p>
-			</div>
-			<div class="quotes" ng-hide='addquotes'>
-				<p>this is Add qoute</p>
-			</div>
-			<div class="quotes" ng-hide='editquotes'>
-				<p>this is Edit/Delete qoute</p>
+			<div class="editquotes" ng-hide='quoteAction'>
+				<h1>Edit Quotes</h1>
+				<form ng-submit="submitEditQuote()">
+					<input type="text" ng-model="eQuote.content" required="required">
+					<input type="submit" value="Edit Quote">
+				</form>
 			</div>
 		</div>
 	</div>

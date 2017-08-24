@@ -53,7 +53,6 @@ ang.registerController('SigninController', function($rootScope, $scope, $locatio
 		  url: url,
 		  data: $scope.user
 		}).then(function successCallback(response) {
-			console.log(response);
             if(response.data.success){
             	$scope.showSignin = true;
 				$scope.showSignup = true;
